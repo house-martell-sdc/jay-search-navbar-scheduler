@@ -43,6 +43,7 @@
     "mysql2": "^1.6.4",
     "node-mysql": "^0.4.2",
     "nodemon": "^1.18.9",
+    "pg": "^7.8.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scroll": "^1.7.10",

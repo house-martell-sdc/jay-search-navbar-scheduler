@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { getCities, getSearchResults } = require('./controller.js');
+const { getSearchResults, deleteRestaurant, editRestaurant, createRestaurant } = require('./controller.js');
 
-router.route('/nav/:metro')
-    .get(getCities)
+// router.route('/nav/:metro')
+//   .get(getCities)
 
 router.route('/search/:searched')
-    .get(getSearchResults)
+  .get(getSearchResults)
 
+router.route('/restaurant')
+  .post(createRestaurant)
 
+router.route('/restaurant')
+  .put(editRestaurant)
+
+router.route('/restaurant/:id')
+  .delete(deleteRestaurant)
 
 module.exports = router;

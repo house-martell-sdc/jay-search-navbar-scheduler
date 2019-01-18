@@ -1,39 +1,51 @@
-const { connection } = require('./index.js');
+// const { connection } = require('./index.js');
 const { sequelize } = require('./index.js');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 
 const Cities = sequelize.define('cities', {
-    city: Sequelize.STRING,
-    metroId: Sequelize.INTEGER
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  cityname: Sequelize.TEXT
 }, {
-        timestamps: false
-    });
+    timestamps: false
+  });
 const Restaurants = sequelize.define('restaurants', {
-    restaurantName: Sequelize.STRING
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  restaurantname: Sequelize.TEXT
 }, {
-        timestamps: false
-    });
+    timestamps: false
+  });
 const Cuisines = sequelize.define('cuisines', {
-    cuisineName: Sequelize.STRING
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  cuisinename: Sequelize.TEXT
 }, {
-        timestamps: false
-    });
+    timestamps: false
+  });
 
 sequelize.sync();
 
 
-const searchForCities = (metro, callback) => {
-    connection.query(`SELECT * FROM cities WHERE metroId = (SELECT id FROM metros WHERE metro = '${metro}')`, function (err, result) {
-        if (err) {
-            callback(err);
-        }
-        else {
-            callback(null, result);
-        }
-    })
-}
+// const searchForCities = (metro, callback) => {
+//   connection.query(`SELECT * FROM cities WHERE metroId = (SELECT id FROM metros WHERE metro = '${metro}')`, function (err, result) {
+//     if (err) {
+//       callback(err);
+//     }
+//     else {
+//       callback(null, result);
+//     }
+//   })
+// }
+
 
 const queryCategories = (query, callback) => {
     let result = {};
@@ -73,5 +85,33 @@ const queryCategories = (query, callback) => {
         })
 }
 
+const deleteRestaurantHelper = (id, callback) => {
+  Restaurants.destroy({where: {id}})
+    .then(() => {
+      callback();
+    })
+    .catch((err) => {
+      callback(err);
+    })
+}
 
-module.exports = { searchForCities, queryCategories, Cities, Restaurants, Cuisines }
+const editRestaurantHelper = (id, restaurantname, callback) => {
+  Restaurants.update({ restaurantname }, {where: {id}})
+  .then(() => {
+    callback();
+  })
+  .catch((err) => {
+    callback(err);
+  })
+}
+
+const createRestaurantHelper = (id, restaurantname, callback) => {
+  Restaurants.create({ id, restaurantname })
+    .then(() => {
+      callback();
+    })
+    .catch((err) => {
+      callback(err);
+    })
+}
+module.exports = { queryCategories, Cities, Restaurants, Cuisines, deleteRestaurantHelper, editRestaurantHelper, createRestaurantHelper }
