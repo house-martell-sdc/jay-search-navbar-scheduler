@@ -9,6 +9,7 @@ const sequelize = new Sequelize({
   username: 'roo',
   password: null,
   host: 'localhost',
+  // logging: false,
   dialect: 'postgres',
   pool: {
     max: 8,

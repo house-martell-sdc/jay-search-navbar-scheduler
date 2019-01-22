@@ -1,7 +1,7 @@
 // const { connection } = require('./index.js');
 const { sequelize } = require('./index.js');
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
+// const Op = Sequelize.Op;
 
 
 const Cities = sequelize.define('cities', {
@@ -49,40 +49,34 @@ sequelize.sync();
 
 const queryCategories = (query, callback) => {
     let result = {};
-    Cities.findAll({
-        where: {
-            city: {
-                [Op.like]: `%${query}%`
-            }
-        }
+    sequelize.query(`select cityname from cities where cityname LIKE '%${query}%'`, {type: sequelize.QueryTypes.SELECT})
+      .then(data => {
+        result['cities'] = data;
+        sequelize.query(`select cuisinename from cuisines where cuisinename LIKE '%${query}%'`, {type: sequelize.QueryTypes.SELECT})
+          .then(data2 => {
+            result['cuisines'] = data2;
+            sequelize.query(`select restaurantname from restaurants where restaurantname LIKE '%${query}%'`, {type: sequelize.QueryTypes.SELECT})
+              .then(data3 => {
+                result['restaurants'] = data3;
+                  callback(null, result)
+              })
+          })
+      })
+      .catch(err => {
+        callback(err);
+      })
+}
+
+const getCities = () => {
+  return new Promise((resolve, reject) => {
+    sequelize.query(`select cityname from cities where cityname LIKE '%${query}%'`, {type: sequelize.QueryTypes.SELECT},  (error, results, fields) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
     })
-        .then(data => {
-            result['cities'] = data;
-            Cuisines.findAll({
-                where: {
-                    cuisineName: {
-                        [Op.like]: `%${query}%`
-                    }
-                }
-            })
-                .then(data2 => {
-                    result['cuisines'] = data2;
-                    Restaurants.findAll({
-                        where: {
-                            restaurantName: {
-                                [Op.like]: `%${query}%`
-                            }
-                        }
-                    })
-                        .then(data => {
-                            result['restaurants'] = data;
-                            callback(null, result)
-                        })
-                })
-        })
-        .catch(err => {
-            callback(err);
-        })
+  })
 }
 
 const deleteRestaurantHelper = (id, callback) => {

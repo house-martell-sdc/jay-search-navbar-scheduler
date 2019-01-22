@@ -41,6 +41,7 @@
     "material-design-icons": "^3.0.1",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.4",
+    "newrelic": "^5.1.0",
     "node-mysql": "^0.4.2",
     "nodemon": "^1.18.9",
     "pg": "^7.8.0",

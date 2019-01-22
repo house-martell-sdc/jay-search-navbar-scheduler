@@ -4,6 +4,10 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+newrelic_agent.log
+
+#newrelic key
+newrelic.js
 
 # Runtime data
 pids

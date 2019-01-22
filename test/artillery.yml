@@ -1,0 +1,12 @@
+config:
+  target: 'http://localhost:9004'
+  phases:
+    - duration: 30
+      arrivalRate: 1
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - get:
+        url: "/api/search/res"
