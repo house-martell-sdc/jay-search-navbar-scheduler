@@ -9,6 +9,9 @@ newrelic_agent.log
 #newrelic key
 newrelic.js
 
+#bundle
+client/dist/bundle.js
+
 # Runtime data
 pids
 *.pid

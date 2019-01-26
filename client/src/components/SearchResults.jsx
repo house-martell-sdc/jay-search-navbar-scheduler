@@ -18,7 +18,7 @@ const SearchResults = (props) => {
                         <div className={style.searchCategoryText}>Locations</div>
                     </div>
                     <ul className={style.ulContainerSearch}>
-                        {props.cityMatch.map(locaMatch => <div className={style.hoverOnSearch} onMouseEnter={props.handleHover}><div className={style.searchResultText}>{locaMatch.city}</div></div>)}
+                        {props.cityMatch.map(locaMatch => <div className={style.hoverOnSearch} onMouseEnter={props.handleHover}><div className={style.searchResultText}>{locaMatch.cityname}</div></div>)}
                     </ul>
                 </div> : <div></div>}
             </div>
@@ -29,7 +29,7 @@ const SearchResults = (props) => {
                         <div className={style.searchCategoryText}>Cuisines</div>
                     </div>
                     <ul className={style.ulContainerSearch}>
-                        {props.cuisineMatch.map(cuisMatch => <div className={style.hoverOnSearch} onMouseEnter={props.handleHover}><div className={style.searchResultText}>{cuisMatch.cuisineName}</div></div>)}
+                        {props.cuisineMatch.map(cuisMatch => <div className={style.hoverOnSearch} onMouseEnter={props.handleHover}><div className={style.searchResultText}>{cuisMatch.cuisinename}</div></div>)}
                     </ul>
                 </div> : <div></div>}
             </div>
@@ -40,7 +40,7 @@ const SearchResults = (props) => {
                         <div className={style.searchCategoryText}>Restaurants</div>
                     </div>
                     <ul className={style.ulContainerSearch}>
-                        {props.restaurantMatch.map(restMatch => <div className={style.hoverOnSearch} onMouseEnter={props.handleHover}><div className={style.searchResultText}>{restMatch.restaurantName}</div></div>)}
+                        {props.restaurantMatch.map(restMatch => <div className={style.hoverOnSearch} onMouseEnter={props.handleHover}><div className={style.searchResultText}>{restMatch.restaurantname}</div></div>)}
                     </ul>
                 </div> : <div></div>}
             </div>

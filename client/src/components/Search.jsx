@@ -34,7 +34,7 @@ class Search extends React.Component {
         }, () => {
             if (this.state.text.length > 1) {
                 let searched = this.state.text;
-                axios.get(`http://18.188.173.143:9004/api/search/${searched}`)
+                axios.get(`http://localhost:9004/api/search/${searched}`)
                     .then(data => {
                         let result = data.data;
                         this.setState({
@@ -106,7 +106,7 @@ class Search extends React.Component {
                                 <i id="datePickerSearch" onClick={this.handleClickSearch} className={"material-icons" + ' ' + style.searchDropLogo}>keyboard_arrow_down</i>
                             </div>
                             <div className={style.timePicker}>
-                                <div class={style.customSelectTime}>
+                                <div className={style.customSelectTime}>
                                     <i className={"material-icons" + ' ' + style.searchDropLogo}>access_time</i>
                                     <div className={style.currentSelectTime}>{this.state.selectedTime}</div>
                                     <i className={"material-icons" + ' ' + style.searchDropLogo}>keyboard_arrow_down</i>
@@ -163,7 +163,7 @@ class Search extends React.Component {
                                 </select>
                             </div>
                             <div className={style.partyCount}>
-                                <div class={style.customPartyCount}>
+                                <div className={style.customPartyCount}>
                                     <i className={"material-icons" + ' ' + style.searchDropLogo}>person</i>
                                     <div className={style.currentPartyCount}>{this.state.selectedPartyCount}</div>
                                     <i className={"material-icons" + ' ' + style.searchDropLogo}>keyboard_arrow_down</i>
