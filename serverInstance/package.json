@@ -1,0 +1,41 @@
+{
+  "name": "jay-search-navbar-scheduler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "start": "nodemon server/index.js",
+    "build": "webpack -d --watch",
+    "createdb": "mysql -u root < schema.sql",
+    "seed": "node database/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrla26-fec-opentable/jay-search-navbar-scheduler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrla26-fec-opentable/jay-search-navbar-scheduler/issues"
+  },
+  "homepage": "https://github.com/hrla26-fec-opentable/jay-search-navbar-scheduler#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^1.30.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "pg": "^7.8.0",
+    "router": "^1.3.3",
+    "sequelize": "^4.42.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.2.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [],
+  "description": ""
+}
