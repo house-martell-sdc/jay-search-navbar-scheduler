@@ -9,6 +9,10 @@ newrelic_agent.log
 #newrelic key
 newrelic.js
 
+#dockers
+Dockerfile
+.dockerignore
+
 #bundle
 client/dist/bundle.js
 
